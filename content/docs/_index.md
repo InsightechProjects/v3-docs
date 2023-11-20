@@ -1,3 +1,13 @@
+---
+title: "Documentation"
+linkTitle: "Documentation"
+weight: 10
+description: >
+  Documentation.
+---
+
+# Welcome
+
 ## Data Collection & Processing
 
 ```mermaid

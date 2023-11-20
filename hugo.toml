@@ -1,6 +1,15 @@
 baseURL = 'https://insightechprojects.github.io/v3-docs/'
 languageCode = 'en-us'
 title = 'Documentation'
+[params.ui]
+  sidebar_menu_compact = false
+  mainSections = ["docs"]
+[menu]
+  [[menu.sidebar]]
+    identifier = "docs"
+    name = "Docs"
+    weight = 10
+    url = "/docs/"
 [module]
   proxy = "direct"
   # uncomment line below for temporary local development of module
