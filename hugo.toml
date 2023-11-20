@@ -1,6 +1,6 @@
 baseURL = 'https://insightechprojects.github.io/v3-docs/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Documentation'
 [module]
   proxy = "direct"
   # uncomment line below for temporary local development of module
@@ -14,3 +14,8 @@ title = 'My New Hugo Site'
   [[module.imports]]
     path = "github.com/google/docsy/dependencies"
     disable = false
+  [[menu.main]]
+    name = "GitHub"
+    weight = 50
+    url = "https://github.com/google/docsy/"
+    pre = "<i class='fa-brands fa-github'></i>"
