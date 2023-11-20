@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://insightechprojects.github.io/v3-docs/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
 [module]
