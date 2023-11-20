@@ -3,13 +3,7 @@ languageCode = 'en-us'
 title = 'Documentation'
 [params.ui]
   sidebar_menu_compact = false
-  mainSections = ["docs"]
-[menu]
-  [[menu.sidebar]]
-    identifier = "docs"
-    name = "Docs"
-    weight = 10
-    url = "/docs/"
+  always_show_sidebar = true
 [module]
   proxy = "direct"
   # uncomment line below for temporary local development of module
