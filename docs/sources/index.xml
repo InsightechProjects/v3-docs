@@ -1,1 +1,34 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Documentation – Sources Overview</title><link>https://insightechprojects.github.io/v3-docs/docs/sources/</link><description>Recent content in Sources Overview on Documentation</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://insightechprojects.github.io/v3-docs/docs/sources/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Documentation – Sources Overview</title><link>https://insightechprojects.github.io/v3-docs/docs/sources/</link><description>Recent content in Sources Overview on Documentation</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://insightechprojects.github.io/v3-docs/docs/sources/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Web JavasScript SDK</title><link>https://insightechprojects.github.io/v3-docs/docs/sources/web_javascript_sdk/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://insightechprojects.github.io/v3-docs/docs/sources/web_javascript_sdk/</guid><description>
+&lt;p>To collect data from websites, implement Web JavaScript SDK on your website pages. You can configure the source in the web interface to control the events you want to collect.&lt;/p>
+&lt;h2 id="event-types">Event types&lt;/h2>
+&lt;p>The SDK automatically tracks the automatic events based on the configurations set in the web interface. It also tracks custom events in data layer objects, including eCommerce events.&lt;/p>
+&lt;h3 id="automatic-events">Automatic events:&lt;/h3>
+&lt;ul>
+&lt;li>&lt;code>pageview&lt;/code>
+This event is triggered automatically when a page is loaded or the URL is changed in single-page applications (SPA).&lt;/li>
+&lt;li>&lt;code>session_start&lt;/code>
+This event is triggered automatically when the first &lt;code>pageview&lt;/code> event is triggered on a new session. A session is defined as a new page view more than 30 minutes after the previous page view or the user comes to the website from an external source.&lt;/li>
+&lt;li>&lt;code>web_click&lt;/code>
+This event is triggered automatically when users click on any elements.&lt;/li>
+&lt;/ul>
+&lt;h2 id="the-data-layer-and-custom-events">The data layer and custom events&lt;/h2>
+&lt;p>You can define a data layer name such as “dataLayer” in the configurations to collect events in the data layer object. The data layer is a JSON array that you can &lt;code>push&lt;/code> events into and each pushed event will trigger data collection in the SDK.&lt;/p>
+&lt;p>For example, the code below collects the user identity with the data layer named &lt;code>dataLayer&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-jsx" data-lang="jsx">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dataLayer&lt;/span>.&lt;span style="color:#a6e22e">push&lt;/span>({
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#39;event&amp;#39;&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;user_identified&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#39;user_id&amp;#39;&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;cNBMvhGM3AV7TA4nIbe1eUiLVVT2&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>});
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="ecommerce-events">eCommerce events&lt;/h2>
+&lt;p>The SDK will automatically collect eCommerce events that follow the &lt;a href="https://developers.google.com/analytics/devguides/collection/ga4/ecommerce?client_type=gtag">Google Analytics 4&lt;/a> schema in the data layer. These include the following events:&lt;/p>
+&lt;ul>
+&lt;li>view_item_list
+This event will generate a &lt;code>view_product_list&lt;/code> event and one &lt;code>view_product_list_item&lt;/code> event for each item.&lt;/li>
+&lt;li>view_item
+This event will generate a &lt;code>view_product_details&lt;/code> event and one &lt;code>view_product_details_item&lt;/code> event for each item.&lt;/li>
+&lt;li>add_to_cart
+This event will generate an &lt;code>add_to_cart&lt;/code> event and one &lt;code>add_to_car_item&lt;/code> event for each item.&lt;/li>
+&lt;li>begin_checkout
+This event will generate a &lt;code>begin_checkout&lt;/code> event and one &lt;code>begin_checkout_item&lt;/code> event for each item.&lt;/li>
+&lt;li>purchase
+This event will generate a &lt;code>purchase&lt;/code> event and one &lt;code>purchase_item&lt;/code> event for each item.&lt;/li>
+&lt;/ul></description></item><item><title>Docs: iOS App SDK</title><link>https://insightechprojects.github.io/v3-docs/docs/sources/ios_app_sdk/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://insightechprojects.github.io/v3-docs/docs/sources/ios_app_sdk/</guid><description/></item><item><title>Docs: Android App SDK</title><link>https://insightechprojects.github.io/v3-docs/docs/sources/android_app_sdk/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://insightechprojects.github.io/v3-docs/docs/sources/android_app_sdk/</guid><description/></item><item><title>Docs: HTTPS API</title><link>https://insightechprojects.github.io/v3-docs/docs/sources/https_api/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://insightechprojects.github.io/v3-docs/docs/sources/https_api/</guid><description/></item></channel></rss>
