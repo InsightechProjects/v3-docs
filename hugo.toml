@@ -2,7 +2,7 @@ baseURL = 'https://docs.datacord.io/'
 languageCode = 'en-us'
 title = 'Datacord Documentation'
 [params]
-  logo = '/iamges/insightech-logo.png'
+  logo = '/images/logo.png'
 [params.ui]
   sidebar_menu_compact = false
   always_show_sidebar = true
