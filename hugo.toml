@@ -1,9 +1,6 @@
 baseURL = 'https://docs.datacord.io/'
 languageCode = 'en-us'
 title = 'Datacord Documentation'
-[params]
-  logo = "/images/logo.png"
-  customCSS = ["/css/custom.css"]
 [params.ui]
   sidebar_menu_compact = false
   always_show_sidebar = true
