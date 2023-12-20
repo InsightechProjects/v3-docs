@@ -1,6 +1,6 @@
-baseURL = 'https://insightechprojects.github.io/v3-docs/'
+baseURL = 'https://docs.datacord.com/'
 languageCode = 'en-us'
-title = 'Documentation'
+title = 'Datacord Documentation'
 [params.ui]
   sidebar_menu_compact = false
   always_show_sidebar = true
