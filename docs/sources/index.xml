@@ -1,5 +1,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Documentation – Sources Overview</title><link>https://insightechprojects.github.io/v3-docs/docs/sources/</link><description>Recent content in Sources Overview on Documentation</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://insightechprojects.github.io/v3-docs/docs/sources/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Web JavasScript SDK</title><link>https://insightechprojects.github.io/v3-docs/docs/sources/web_javascript_sdk/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://insightechprojects.github.io/v3-docs/docs/sources/web_javascript_sdk/</guid><description>
 &lt;p>To collect data from websites, implement Web JavaScript SDK on your website pages. You can configure the source in the web interface to control the events you want to collect.&lt;/p>
+&lt;h2 id="create-the-source">Create the source&lt;/h2>
+&lt;p>Go to the user interface and create a new source using the &lt;strong>Web JavaScript SDK&lt;/strong>. The source will be assigned a unique ID that will be used to identify it for data collection and provide you with a snippet of JavaScript code that you can install to your website via tag management systems (TMS) or embed in your web pages directly.&lt;/p>
+&lt;h3 id="domains">Domains&lt;/h3>
+&lt;h3 id="data-layer-name">Data Layer Name&lt;/h3>
 &lt;h2 id="event-types">Event types&lt;/h2>
 &lt;p>The SDK automatically tracks the automatic events based on the configurations set in the web interface. It also tracks custom events in data layer objects, including eCommerce events.&lt;/p>
 &lt;h3 id="automatic-events">Automatic events:&lt;/h3>
@@ -31,4 +35,131 @@ This event will generate an &lt;code>add_to_cart&lt;/code> event and one &lt;cod
 This event will generate a &lt;code>begin_checkout&lt;/code> event and one &lt;code>begin_checkout_item&lt;/code> event for each item.&lt;/li>
 &lt;li>purchase
 This event will generate a &lt;code>purchase&lt;/code> event and one &lt;code>purchase_item&lt;/code> event for each item.&lt;/li>
-&lt;/ul></description></item><item><title>Docs: iOS App SDK</title><link>https://insightechprojects.github.io/v3-docs/docs/sources/ios_app_sdk/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://insightechprojects.github.io/v3-docs/docs/sources/ios_app_sdk/</guid><description/></item><item><title>Docs: Android App SDK</title><link>https://insightechprojects.github.io/v3-docs/docs/sources/android_app_sdk/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://insightechprojects.github.io/v3-docs/docs/sources/android_app_sdk/</guid><description/></item><item><title>Docs: HTTPS API</title><link>https://insightechprojects.github.io/v3-docs/docs/sources/https_api/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://insightechprojects.github.io/v3-docs/docs/sources/https_api/</guid><description/></item></channel></rss>
+&lt;/ul></description></item><item><title>Docs: iOS App SDK</title><link>https://insightechprojects.github.io/v3-docs/docs/sources/ios_app_sdk/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://insightechprojects.github.io/v3-docs/docs/sources/ios_app_sdk/</guid><description>
+&lt;p>To collect data from your iOS native app, you need to implement the Swift SDK for iOS.&lt;/p>
+&lt;h2 id="create-the-source">Create the source&lt;/h2>
+&lt;p>Go to the user interface and create a new source using the &lt;strong>iOS App SDK&lt;/strong>. The source will be assigned a unique ID that will be used to identify it for data collection.&lt;/p>
+&lt;h2 id="installation">Installation&lt;/h2>
+&lt;ol>
+&lt;li>Download the SDK from [here].&lt;/li>
+&lt;li>Drag and drop the SDK into your App using XCode.&lt;/li>
+&lt;li>In your App settings, go to the &lt;strong>General&lt;/strong> tab. Under &lt;strong>Frameworks, Libraries, and Embedded Content&lt;/strong>, locate the SDK and set it to &amp;ldquo;Embed &amp;amp; Sign&amp;rdquo; to complete the installation.&lt;/li>
+&lt;/ol>
+&lt;h2 id="setup-the-sdk">Setup the SDK&lt;/h2>
+&lt;p>To use the SDK, you need to import it and call the &lt;code>setup&lt;/code> function with the server ID and source ID to specify the location of the data collection API endpoint. Here&amp;rsquo;s an example of the code:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-swift" data-lang="swift">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> &lt;span style="color:#a6e22e">DatarooSDK&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>DatarooSDK.setup(server: &lt;span style="color:#e6db74">&amp;#34;server_id&amp;#34;&lt;/span>, sourceId: &lt;span style="color:#e6db74">&amp;#34;source_id&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The &lt;code>setup&lt;/code> function will automatically collect the &lt;code>app_start&lt;/code> event and set the &lt;code>device_id&lt;/code> and &lt;code>session_id&lt;/code>, which will be associated with all subsequent events.&lt;/p>
+&lt;h2 id="collect-screen-view-event-data">Collect screen view event data&lt;/h2>
+&lt;p>To track a screen view event when a screen is loaded, use the following code with the screen name:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-swift" data-lang="swift">&lt;span style="display:flex;">&lt;span>DatarooSDK.shared?.trackView(viewName: &lt;span style="color:#e6db74">&amp;#34;screen_name&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The &lt;code>trackView&lt;/code> function is typically called within the &lt;code>onAppear&lt;/code> event. For example:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-swift" data-lang="swift">&lt;span style="display:flex;">&lt;span>.onAppear {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> DatarooSDK.shared?.trackView(viewName: &lt;span style="color:#e6db74">&amp;#34;dashboard_view&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="collect-custom-event-data">Collect custom event data&lt;/h2>
+&lt;p>You can collect custom event data using the &lt;code>track&lt;/code> function. Custom event data can be used to track user interactions. The events will be automatically attached to the latest screen view event and share the same &lt;code>view_id&lt;/code>. Here&amp;rsquo;s an example of the code:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-swift" data-lang="swift">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> data: [String: Any] = [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;prop1&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;val1&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;prop2&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;val2&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>DatarooSDK.shared?.track(event: &lt;span style="color:#e6db74">&amp;#34;event_name&amp;#34;&lt;/span>, data: data)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="identify-the-user">Identify the user&lt;/h2>
+&lt;p>The &lt;code>trackView&lt;/code> and &lt;code>track&lt;/code> functions can take the user ID as an input parameter if the user is identified. For example:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-swift" data-lang="swift">&lt;span style="display:flex;">&lt;span>DatarooSDK.shared?.trackView(viewName: &lt;span style="color:#e6db74">&amp;#34;screen_name&amp;#34;&lt;/span>, userId: &lt;span style="color:#e6db74">&amp;#34;user_id_123&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-swift" data-lang="swift">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> data: [String: Any] = [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;prop1&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;val1&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;prop2&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;val2&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>DatarooSDK.shared?.track(event: &lt;span style="color:#e6db74">&amp;#34;event_name&amp;#34;&lt;/span>, data: data, userId: &lt;span style="color:#e6db74">&amp;#34;user_id_123&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Another way to identify the user is by using the specific event &lt;code>user_identified&lt;/code>. Here&amp;rsquo;s an example of the code:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-swift" data-lang="swift">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> data: [String: Any] = [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;user_id&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;user_id_123&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>DatarooSDK.shared?.track(event: &lt;span style="color:#e6db74">&amp;#34;user_identified&amp;#34;&lt;/span>, data: data)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>There is no need to send the user ID in every event because once the user is identified, the user ID will be associated with the device ID and all events from the device will be automatically associated with the user.&lt;/p>
+&lt;h2 id="queue-the-events">Queue the events&lt;/h2>
+&lt;p>By default, events are sent immediately when the functions are called. However, if you don&amp;rsquo;t want to send the events immediately, you can put them into a queue and send them in a batch. To do this, set the &lt;code>queueData&lt;/code> parameter to &lt;code>true&lt;/code> when calling the &lt;code>track&lt;/code> and &lt;code>trackView&lt;/code> functions. Here&amp;rsquo;s an example of the code:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-swift" data-lang="swift">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> data: [String: Any] = [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;prop1&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;val1&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;prop2&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;val2&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>DatarooSDK.shared?.track(event: &lt;span style="color:#e6db74">&amp;#34;event_name&amp;#34;&lt;/span>, data: data, userId: &lt;span style="color:#e6db74">&amp;#34;user_id_123&amp;#34;&lt;/span>, queueData: &lt;span style="color:#66d9ef">true&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Please note that queuing the events won&amp;rsquo;t affect the timestamps of the events. The events will still have the original timestamps when they were created.&lt;/p></description></item><item><title>Docs: Android App SDK</title><link>https://insightechprojects.github.io/v3-docs/docs/sources/android_app_sdk/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://insightechprojects.github.io/v3-docs/docs/sources/android_app_sdk/</guid><description>
+&lt;p>To collect data from your Android native app, you need to implement the Kotlin SDK for Android.&lt;/p>
+&lt;h2 id="create-the-source">Create the source&lt;/h2>
+&lt;p>Go to the user interface and create a new source using the &lt;strong>Android App SDK&lt;/strong>. The source will be assigned a unique ID that will be used to identify it for data collection.&lt;/p>
+&lt;h2 id="installation">Installation&lt;/h2>
+&lt;ol>
+&lt;li>Download the SDK from [here].&lt;/li>
+&lt;li>Import the AAR file of the SDK as a module&lt;/li>
+&lt;/ol>
+&lt;h2 id="setup-the-sdk">Setup the SDK&lt;/h2>
+&lt;p>To use the SDK, you need to import it and call the &lt;code>setup&lt;/code> function with the server ID and source ID to specify the location of the data collection API endpoint. Here&amp;rsquo;s an example of the code:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">package&lt;/span> com.example.testapp
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> android.app.Application
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> com.insightech.dataroo.DatarooSDK
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">MyApp&lt;/span> : Application() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">override&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">onCreate&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">super&lt;/span>.onCreate()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">DatarooSDK&lt;/span>.setup(context = &lt;span style="color:#66d9ef">this&lt;/span>, server = &lt;span style="color:#e6db74">&amp;#34;server_id&amp;#34;&lt;/span>, sourceId = &lt;span style="color:#e6db74">&amp;#34;source_id&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The &lt;code>setup&lt;/code> function will automatically collect the &lt;code>app_start&lt;/code> event and set the &lt;code>device_id&lt;/code> and &lt;code>session_id&lt;/code>, which will be associated with all subsequent events.&lt;/p>
+&lt;h2 id="collect-screen-view-event-data">Collect screen view event data&lt;/h2>
+&lt;p>To track a screen view event when a screen is loaded, use the following code with the screen name:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">DatarooSDK&lt;/span>.trackView(viewName = &lt;span style="color:#e6db74">&amp;#34;screen_name&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The &lt;code>trackView&lt;/code> function is typically called within the &lt;code>onRsume&lt;/code> event. For example:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">ExampleActivity&lt;/span> : AppCompatActivity() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">..&lt;/span>.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">override&lt;/span> &lt;span style="color:#66d9ef">fun&lt;/span> &lt;span style="color:#a6e22e">onResume&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">super&lt;/span>.onResume()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">DatarooSDK&lt;/span>.trackView(viewName = &lt;span style="color:#e6db74">&amp;#34;screen_name&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="collect-custom-event-data">Collect custom event data&lt;/h2>
+&lt;p>You can collect custom event data using the &lt;code>track&lt;/code> function. Custom event data can be used to track user interactions. The events will be automatically attached to the latest screen view event and share the same &lt;code>view_id&lt;/code>. Here&amp;rsquo;s an example of the code:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">DatarooSDK&lt;/span>.track(event = &lt;span style="color:#e6db74">&amp;#34;event_name&amp;#34;&lt;/span>, &lt;span style="color:#66d9ef">data&lt;/span> = mapOf(&lt;span style="color:#e6db74">&amp;#34;prop1&amp;#34;&lt;/span> to &lt;span style="color:#e6db74">&amp;#34;val1&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;prop2&amp;#34;&lt;/span> to &lt;span style="color:#e6db74">&amp;#34;val2&amp;#34;&lt;/span>))
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="identify-the-user">Identify the user&lt;/h2>
+&lt;p>The &lt;code>trackView&lt;/code> and &lt;code>track&lt;/code> functions can take the user ID as an input parameter if the user is identified. For example:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">DatarooSDK&lt;/span>.trackView(viewName = &lt;span style="color:#e6db74">&amp;#34;screen_name&amp;#34;&lt;/span>, userId = &lt;span style="color:#e6db74">&amp;#34;user_id_123&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">DatarooSDK&lt;/span>.track(event = &lt;span style="color:#e6db74">&amp;#34;event_name&amp;#34;&lt;/span>, &lt;span style="color:#66d9ef">data&lt;/span> = mapOf(&lt;span style="color:#e6db74">&amp;#34;prop1&amp;#34;&lt;/span> to &lt;span style="color:#e6db74">&amp;#34;val1&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;prop2&amp;#34;&lt;/span> to &lt;span style="color:#e6db74">&amp;#34;val2&amp;#34;&lt;/span>), userId = &lt;span style="color:#e6db74">&amp;#34;user_id_123&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Another way to identify the user is by using the specific event &lt;code>user_identified&lt;/code>. Here&amp;rsquo;s an example of the code:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">DatarooSDK&lt;/span>.track(event = &lt;span style="color:#e6db74">&amp;#34;user_identified&amp;#34;&lt;/span>, &lt;span style="color:#66d9ef">data&lt;/span> = mapOf(&lt;span style="color:#e6db74">&amp;#34;user_id&amp;#34;&lt;/span> to &lt;span style="color:#e6db74">&amp;#34;user_id_123&amp;#34;&lt;/span>))
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>There is no need to send the user ID in every event because once the user is identified, the user ID will be associated with the device ID and all events from the device will be automatically associated with the user.&lt;/p>
+&lt;h2 id="queue-the-events">Queue the events&lt;/h2>
+&lt;p>By default, events are sent immediately when the functions are called. However, if you don&amp;rsquo;t want to send the events immediately, you can put them into a queue and send them in a batch. To do this, set the &lt;code>queueData&lt;/code> parameter to &lt;code>true&lt;/code> when calling the &lt;code>track&lt;/code> and &lt;code>trackView&lt;/code> functions. Here&amp;rsquo;s an example of the code:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">DatarooSDK&lt;/span>.track(event = &lt;span style="color:#e6db74">&amp;#34;event_name&amp;#34;&lt;/span>, &lt;span style="color:#66d9ef">data&lt;/span> = mapOf(&lt;span style="color:#e6db74">&amp;#34;prop1&amp;#34;&lt;/span> to &lt;span style="color:#e6db74">&amp;#34;val1&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;prop2&amp;#34;&lt;/span> to &lt;span style="color:#e6db74">&amp;#34;val2&amp;#34;&lt;/span>), queueData = &lt;span style="color:#66d9ef">true&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Please note that queuing the events won&amp;rsquo;t affect the timestamps of the events. The events will still have the original timestamps when they were created.&lt;/p></description></item><item><title>Docs: HTTPS API</title><link>https://insightechprojects.github.io/v3-docs/docs/sources/https_api/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://insightechprojects.github.io/v3-docs/docs/sources/https_api/</guid><description>
+&lt;p>If you are unable to find an SDK for the channel from which you want to collect data, using the HTTPS API source type is always a flexible option. The SDKs also collect data via the HTTPS API, but they provide an interface to interact with the API endpoint and automate specific data collection tasks.&lt;/p>
+&lt;p>Once you have created an HTTPS API endpoint, you can send the data to the endpoint in the following JSON format. Each request can collect multiple events as an array, reducing the number of network requests.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>[{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#960050;background-color:#1e0010">event_id:&lt;/span> &lt;span style="color:#f92672">&amp;#34;event_unique_id&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#960050;background-color:#1e0010">event:&lt;/span> &lt;span style="color:#f92672">&amp;#34;event_type&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#960050;background-color:#1e0010">user_id:&lt;/span> &lt;span style="color:#f92672">&amp;#34;user_123&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#960050;background-color:#1e0010">device_id:&lt;/span> &lt;span style="color:#f92672">&amp;#34;device_unique_id&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#960050;background-color:#1e0010">session_id:&lt;/span> &lt;span style="color:#f92672">&amp;#34;session_123&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#960050;background-color:#1e0010">view_id:&lt;/span> &lt;span style="color:#f92672">&amp;#34;pageview_xyz&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#960050;background-color:#1e0010">timestamp:&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">1683363983423,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#960050;background-color:#1e0010">data:&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#960050;background-color:#1e0010">prop1:&lt;/span> &lt;span style="color:#f92672">&amp;#34;ABC&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#960050;background-color:#1e0010">prop2:&lt;/span> &lt;span style="color:#f92672">&amp;#34;test&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">}&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="event-fields">Event fields&lt;/h2>
+&lt;ul>
+&lt;li>&lt;strong>id&lt;/strong> - required: This is the unique identifier of the event. Reusing the same ID may not result in de-duplication of the event, but it could impact the analytics results.&lt;/li>
+&lt;li>&lt;strong>type&lt;/strong> - required: This is a string value that indicates the type of event, such as &amp;ldquo;pageview&amp;rdquo; for website page views or &amp;ldquo;click&amp;rdquo; for clicks. Certain event types may trigger special logic in the data processing.&lt;/li>
+&lt;li>&lt;strong>user_id&lt;/strong> - optional: When set, the &lt;code>user_id&lt;/code> associates the device with a specific user.&lt;/li>
+&lt;li>&lt;strong>device_id&lt;/strong> - required: This is the unique identifier of the device that generates the event. If a user is identified, the &lt;code>user_id&lt;/code> will be linked to the &lt;code>device_id&lt;/code> when the data is processed, and all events associated with the device will also be associated with the user.&lt;/li>
+&lt;li>&lt;strong>session_id&lt;/strong> - optional: This is the unique identifier of the session. The client-side SDK can maintain the session and include the &lt;code>session_id&lt;/code> in the requests. If the &lt;code>session_id&lt;/code> is empty, the data processor will use a 30-minute window to determine if the event marks the start of a new session.&lt;/li>
+&lt;li>&lt;strong>view_id&lt;/strong> - optional: This is the unique identifier of the view, such as a page view or mobile app screen.&lt;/li>
+&lt;li>&lt;strong>timestamp&lt;/strong> - required: This is the millisecond timestamp of the event.&lt;/li>
+&lt;li>&lt;strong>data&lt;/strong> - optional: This is a one-level nested JSON object that can contain custom data. The property names in the JSON must not start with an underscore. Each event can have a maximum of 50 properties in the &lt;code>data&lt;/code> field.&lt;/li>
+&lt;/ul></description></item></channel></rss>
