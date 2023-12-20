@@ -2,7 +2,8 @@ baseURL = 'https://docs.datacord.io/'
 languageCode = 'en-us'
 title = 'Datacord Documentation'
 [params]
-  logo = '/images/logo.png'
+  logo = "/images/logo.png"
+  customCSS = ["/css/custom.css"]
 [params.ui]
   sidebar_menu_compact = false
   always_show_sidebar = true
@@ -20,7 +21,7 @@ title = 'Datacord Documentation'
     path = "github.com/google/docsy/dependencies"
     disable = false
   [[menu.main]]
-    name = "GitHub"
+    name = "Sign In"
     weight = 50
-    url = "https://github.com/google/docsy/"
-    pre = "<i class='fa-brands fa-github'></i>"
+    url = "https://app.datacord.io"
+    pre = "<i class='fa-solid fa-arrow-right-to-bracket'></i>"
