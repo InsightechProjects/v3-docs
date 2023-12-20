@@ -7,6 +7,14 @@ description: >
 ---
 To collect data from websites, implement Web JavaScript SDK on your website pages. You can configure the source in the web interface to control the events you want to collect.
 
+## Create the source
+
+Go to the user interface and create a new source using the **Web JavaScript SDK**. The source will be assigned a unique ID that will be used to identify it for data collection and provide you with a snippet of JavaScript code that you can install to your website via tag management systems (TMS) or embed in your web pages directly.
+
+### Domains
+
+### Data Layer Name
+
 ## Event types
 
 The SDK automatically tracks the automatic events based on the configurations set in the web interface. It also tracks custom events in data layer objects, including eCommerce events.
