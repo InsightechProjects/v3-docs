@@ -1,4 +1,4 @@
-baseURL = 'https://docs.datacord.com/'
+baseURL = 'https://docs.datacord.io/'
 languageCode = 'en-us'
 title = 'Datacord Documentation'
 [params.ui]
