@@ -1,33 +1,42 @@
-env:
-  HUGO_VERSION: '0.88.1'
-
-
-name: Deploy to GitHub Pages
+name: github pages
 
 on:
   push:
     branches:
-      - main
-      jobs:
-        deploy:
-          runs-on: ubuntu-latest
+      - main  # Set a branch to deploy
+  pull_request:
 
-          steps:
-            - name: Checkout repository
-              uses: actions/checkout@v2
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
-            - name: Set up Hugo
-              uses: peaceiris/actions-hugo@v2
-              with:
-                hugo-version: '0.88.1-extended' # Update Hugo version to the extended version
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          extended: true
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: |
+          npm install -g postcss-cli
+          npm install autoprefixer
+          npm install -g postcss
+          npm install postcss
 
-            - name: Build
-              run: hugo --minify
+      - name: Build
+        run: hugo --minify
 
-            - name: Deploy to GitHub Pages
-              uses: peaceiris/actions-gh-pages@v3
-              with:
-                github_token: ${{ secrets.GITHUB_TOKEN }}
-                publish_dir: ./public
-                publish_branch: gh-pages
-                cname: docs.datacord.io # Optional: Add your custom domain here
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
