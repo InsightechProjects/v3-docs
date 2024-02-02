@@ -8,27 +8,26 @@ on:
   push:
     branches:
       - main
+      jobs:
+        deploy:
+          runs-on: ubuntu-latest
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+          steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+            - name: Set up Hugo
+              uses: peaceiris/actions-hugo@v2
+              with:
+                hugo-version: '0.88.1-extended' # Update Hugo version to the extended version
 
-      - name: Set up Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: '0.88.1-extended' # Update Hugo version to the extended version
+            - name: Build
+              run: hugo --minify
 
-      - name: Build
-        run: hugo --minify
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          publish_branch: gh-pages
-          cname: docs.datacord.io # Optional: Add your custom domain here
+            - name: Deploy to GitHub Pages
+              uses: peaceiris/actions-gh-pages@v3
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                publish_dir: ./public
+                publish_branch: gh-pages
+                cname: docs.datacord.io # Optional: Add your custom domain here
