@@ -1,3 +1,7 @@
+env:
+  HUGO_VERSION: '0.88.1'
+
+
 name: Deploy to GitHub Pages
 
 on:
@@ -27,4 +31,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           publish_branch: gh-pages
-          cname: your-custom-domain.com # Optional: Add your custom domain here
+          cname: docs.datacord.io # Optional: Add your custom domain here
