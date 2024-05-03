@@ -3,36 +3,45 @@ title: "Web JavasScript SDK"
 linkTitle: "Web JavasScript SDK"
 weight: 10
 description: >
-  To collect data from websites, implement Web JavaScript SDK on your website pages.
 ---
-To collect data from websites, implement Web JavaScript SDK on your website pages. You can configure the source in the web interface to control the events you want to collect.
+The Web JavaScript SDK is designed to capture user data from web pages. It automatically records interactions such as page views, clicks, and various events from the data layer. You can tailor data collection settings through the source settings interface.
 
-## Create the source
+## Create a Source
 
-Go to the user interface and create a new source using the **Web JavaScript SDK**. The source will be assigned a unique ID that will be used to identify it for data collection and provide you with a snippet of JavaScript code that you can install to your website via tag management systems (TMS) or embed in your web pages directly.
+To create a new source:
 
-### Domains
+1. Access the user interface.
+2. Select the **Web JavaScript SDK** option.
+3. Upon creation, you'll receive a unique source ID. This ID is crucial for identifying your source during data collection. You will also be provided with a JavaScript code snippet. You can integrate this snippet into your website either through a Tag Management System (TMS) or by embedding it directly into your web pages.
 
-### Data Layer Name
+## Event Types
 
-## Event types
-
-The SDK automatically tracks the automatic events based on the configurations set in the web interface. It also tracks custom events in data layer objects, including eCommerce events.
+The SDK captures both automatic and custom events based on your configuration settings:
 
 ### Automatic events:
 
 - `pageview`
-This event is triggered automatically when a page is loaded or the URL is changed in single-page applications (SPA).
+Triggered automatically when a page loads or the URL changes, as seen in single-page applications (SPA).
 - `session_start`
-This event is triggered automatically when the first `pageview` event is triggered on a new session. A session is defined as a new page view more than 30 minutes after the previous page view or the user comes to the website from an external source.
+Triggered when the first `pageview` event occurs in a new session. A session is defined as either a new page view occurring more than 30 minutes after the last page view or when a user visits from an external source.
 - `web_click`
-This event is triggered automatically when users click on any elements.
+Triggered when users click on any page elements.
 
-## The data layer and custom events
+## Install the Web JavaScript SDK
 
-You can define a data layer name such as “dataLayer” in the configurations to collect events in the data layer object. The data layer is a JSON array that you can `push` events into and each pushed event will trigger data collection in the SDK.
+To install the SDK, insert the following script into every webpage. Ensure to replace `source_id` and `server_id` with the appropriate values provided for your source.
 
-For example, the code below collects the user identity with the data layer named `dataLayer`.
+```jsx
+<script>
+!function(){ var async = function(c){ var d = document, s = d.createElement('script'), h = d.getElementsByTagName('head')[0]; s.src = 'https://cdn.datacord.io/datacord.js'; if(c){s.addEventListener('load', function(e){c(null,e);}, false);} h.appendChild(s); }; async(function(){ inst = new _Analytics("source_id","server_id"); }); }();
+</script>
+```
+
+## Data Layer and Custom Events
+
+Define a data layer name (e.g., `dataLayer`) in your configurations to manage events within this layer. Events pushed to this layer trigger data collection via the SDK.
+
+For instance, to collect user identity information, use the following code:
 
 ```jsx
 dataLayer.push({
@@ -41,17 +50,14 @@ dataLayer.push({
 });
 ```
 
-## eCommerce events
+## eCommerce Events
 
-The SDK will automatically collect eCommerce events that follow the [Google Analytics 4](https://developers.google.com/analytics/devguides/collection/ga4/ecommerce?client_type=gtag) schema in the data layer. These include the following events:
+The SDK is configured to automatically handle eCommerce events based on the [Google Analytics](https://developers.google.com/analytics/devguides/collection/ga4/ecommerce?client_type=gtm) 4 schema. Events include:
 
-- view_item_list
-This event will generate a `view_product_list` event and one `view_product_list_item` event for each item.
-- view_item
-This event will generate a `view_product_details` event and one `view_product_details_item` event for each item.
-- add_to_cart
-This event will generate an `add_to_cart` event and one `add_to_car_item` event for each item.
-- begin_checkout
-This event will generate a `begin_checkout` event and one `begin_checkout_item` event for each item.
-- purchase
-This event will generate a `purchase` event and one `purchase_item` event for each item.
+- `view_item_list`: Generates a `view_product_list` event and a `view_product_list_item` event for each item.
+- `view_item`: Triggers a `view_product_details` event and a `view_product_details_item` event for each listed item.
+- `add_to_cart`: Triggers an `add_to_cart` event and an `add_to_cart_item` event for each item added.
+- `begin_checkout`: Triggers a `begin_checkout` event and a `begin_checkout_item` event for each item.
+- `purchase`: Triggers a `purchase` event and a `purchase_item` event for each item purchased.
+
+This setup allows for detailed tracking of user interactions and behaviors in eCommerce environments.

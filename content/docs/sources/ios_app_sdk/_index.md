@@ -5,69 +5,59 @@ weight: 20
 description: >
   
 ---
-To collect data from your iOS native app, you need to implement the Swift SDK for iOS.
+The iOS App SDK is designed for integrating analytics into iOS native applications. It facilitates data collection on user interactions, enabling developers to track events, screen views, and user identities efficiently.
 
-## Create the source
+## Create a Source
 
-Go to the user interface and create a new source using the **iOS App SDK**. The source will be assigned a unique ID that will be used to identify it for data collection.
+1. Go to the user interface and create a new source with the **iOS App SDK**.
+2. You will receive a unique ID for data collection purposes.
 
 ## Installation
 
-1. Download the SDK from [here].
+1. Download the SDK from here.
 2. Drag and drop the SDK into your App using XCode.
 3. In your App settings, go to the **General** tab. Under **Frameworks, Libraries, and Embedded Content**, locate the SDK and set it to "Embed & Sign" to complete the installation.
 
-## Setup the SDK
+## Setup
 
 To use the SDK, you need to import it and call the `setup` function with the server ID and source ID to specify the location of the data collection API endpoint. Here's an example of the code:
 
 ```swift
-import DatarooSDK
+import DatacordSDK
 
-DatarooSDK.setup(server: "server_id", sourceId: "source_id")
-
+DatacordSDK.setup(server: "server_id", sourceId: "source_id")
 ```
 
-The `setup` function will automatically collect the `app_start` event and set the `device_id` and `session_id`, which will be associated with all subsequent events.
+Upon initialization, the `setup` function not only automatically collects the `app_start` event but also assigns a `device_id` and `session_id`. These identifiers are then linked to all subsequent events to ensure consistent tracking throughout the session
 
-## Collect screen view event data
+## Track Screen View
 
-To track a screen view event when a screen is loaded, use the following code with the screen name:
-
-```swift
-DatarooSDK.shared?.trackView(viewName: "screen_name")
-
-```
-
-The `trackView` function is typically called within the `onAppear` event. For example:
+Implement screen view tracking within the `onAppear` lifecycle event:
 
 ```swift
 .onAppear {
-	DatarooSDK.shared?.trackView(viewName: "dashboard_view")
+	DatacordSDK.shared?.trackView(viewName: "screen_name")
 }
-
 ```
 
-## Collect custom event data
+## Tracking Custom Events
 
-You can collect custom event data using the `track` function. Custom event data can be used to track user interactions. The events will be automatically attached to the latest screen view event and share the same `view_id`. Here's an example of the code:
+The `track` function allows you to capture custom event data, which is particularly useful for monitoring user interactions. These custom events are automatically linked to the most recent screen view, sharing the same `view_id` for cohesive tracking. Here's how you can implement this in your code:
 
 ```swift
 let data: [String: Any] = [
 	"prop1": "val1",
 	"prop2": "val2"
 ]
-DatarooSDK.shared?.track(event: "event_name", data: data)
-
+DatacordSDK.shared?.track(event: "event_name", data: data)
 ```
 
-## Identify the user
+## User Identification
 
-The `trackView` and `track` functions can take the user ID as an input parameter if the user is identified. For example:
+The `trackView` and `track` functions can optionally include a user ID as a parameter when the user has been identified. This allows events to be associated with specific users. Here’s a couple of examples of how to implement this:
 
 ```swift
-DatarooSDK.shared?.trackView(viewName: "screen_name", userId: "user_id_123")
-
+DatacordSDK.shared?.trackView(viewName: "screen_name", userId: "user_id_123")
 ```
 
 ```swift
@@ -75,33 +65,30 @@ let data: [String: Any] = [
 	"prop1": "val1",
 	"prop2": "val2"
 ]
-DatarooSDK.shared?.track(event: "event_name", data: data, userId: "user_id_123")
-
+DatacordSDK.shared?.track(event: "event_name", data: data, userId: "user_id_123")
 ```
 
-Another way to identify the user is by using the specific event `user_identified`. Here's an example of the code:
+You can also identify users by triggering a `user_identified` event. This method directly associates user IDs with subsequent data collection, streamlining user tracking. Here's an example of how to code this:
 
 ```swift
 let data: [String: Any] = [
 	"user_id": "user_id_123"
 ]
-DatarooSDK.shared?.track(event: "user_identified", data: data)
-
+DatacordSDK.shared?.track(event: "user_identified", data: data)
 ```
 
-There is no need to send the user ID in every event because once the user is identified, the user ID will be associated with the device ID and all events from the device will be automatically associated with the user.
+Once a user is identified, there's no need to include the user ID in every event. The user ID will be linked to the device ID, allowing all subsequent events from that device to be automatically associated with the identified user.
 
-## Queue the events
+## Event Batching
 
-By default, events are sent immediately when the functions are called. However, if you don't want to send the events immediately, you can put them into a queue and send them in a batch. To do this, set the `queueData` parameter to `true` when calling the `track` and `trackView` functions. Here's an example of the code:
+By default, events are immediately transmitted once functions are called. However, if you prefer batching events for later transmission, you can enable queuing by setting the `queueData` parameter to `true` when using the `track` and `trackView` functions. Here's how you can implement this:
 
 ```swift
 let data: [String: Any] = [
 	"prop1": "val1",
 	"prop2": "val2"
 ]
-DatarooSDK.shared?.track(event: "event_name", data: data, userId: "user_id_123", queueData: true)
-
+DatacordSDK.shared?.track(event: "event_name", data: data, userId: "user_id_123", queueData: true)
 ```
 
-Please note that queuing the events won't affect the timestamps of the events. The events will still have the original timestamps when they were created.
+Please note that queuing events for later transmission does not alter their timestamps. Each event will retain the timestamp from the moment it was originally created.
